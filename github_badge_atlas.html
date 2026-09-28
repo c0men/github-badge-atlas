@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0d1117">
+<title>GitHub Badge Atlas — Achievement & Highlight Catalog</title>
+<meta name="description" content="An interactive community catalog of GitHub profile achievements, highlights, tiers, and retired badges.">
+<style>
+:root{--bg:#0d1117;--panel:#161b22;--panel2:#0f141b;--line:#30363d;--text:#e6edf3;--muted:#9198a1;--green:#3fb950;--blue:#2f81f7;--purple:#a371f7;--orange:#d29922;--red:#f85149;--shadow:0 18px 60px #0007}
+[data-theme=light]{--bg:#f6f8fa;--panel:#fff;--panel2:#f6f8fa;--line:#d1d9e0;--text:#1f2328;--muted:#59636e;--green:#1a7f37;--blue:#0969da;--purple:#8250df;--orange:#9a6700;--red:#cf222e;--shadow:0 18px 60px #1f23281c}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.55 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
+button,input,select{font:inherit}button{cursor:pointer}
+.topbar{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{max-width:1200px;margin:auto;padding:12px 22px;display:flex;align-items:center;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.4px;color:var(--text);white-space:nowrap}.brand-mark{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,#8250df,#2f81f7);display:grid;place-items:center;color:white;font-size:19px}
+.navlinks{display:flex;gap:18px;margin-left:auto}.navlinks a{color:var(--muted);font-size:14px}.navlinks a:hover{color:var(--text)}
+.iconbtn,.btn{border:1px solid var(--line);background:var(--panel);color:var(--text);border-radius:9px;padding:9px 12px}.btn.primary{background:#238636;border-color:#238636;color:#fff;font-weight:650}.btn:hover,.iconbtn:hover{filter:brightness(1.12)}
+.hero{border-bottom:1px solid var(--line);background:radial-gradient(ellipse at 15% 0%,#8250df24,transparent 45%),radial-gradient(ellipse at 85% 10%,#2f81f71b,transparent 42%)}
+.wrap{max-width:1200px;margin:auto;padding:0 22px}.hero-inner{padding:66px 0 48px;display:grid;grid-template-columns:1.3fr .7fr;gap:35px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--panel);border-radius:99px;padding:5px 11px;color:var(--muted);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em}
+h1{font-size:clamp(38px,5vw,64px);line-height:1.04;letter-spacing:-2.6px;margin:20px 0 18px}.gradient{background:linear-gradient(100deg,#a371f7,#58a6ff 65%,#3fb950);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{font-size:18px;color:var(--muted);max-width:650px;margin:0 0 25px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.hero-card{border:1px solid var(--line);background:color-mix(in srgb,var(--panel) 90%,transparent);border-radius:18px;padding:23px;box-shadow:var(--shadow)}
+.hero-card h3{margin:0 0 15px;font-size:14px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.stat{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:16px}.stat strong{font-size:29px;display:block;letter-spacing:-1px}.stat span{font-size:12px;color:var(--muted)}
+main{max-width:1200px;margin:auto;padding:36px 22px 80px}
+.notice{display:flex;gap:12px;padding:15px 17px;border:1px solid #9e6a03;background:color-mix(in srgb,#9e6a03 10%,var(--panel));border-radius:12px;margin-bottom:28px;color:var(--muted);font-size:14px}.notice b{color:var(--text)}
+.toolbar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:22px 0 28px}.searchbox{position:relative;flex:1;min-width:230px}.searchbox input{width:100%;padding:12px 14px 12px 42px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--text);outline:none}.searchbox input:focus{border-color:var(--blue);box-shadow:0 0 0 3px #2f81f733}.searchbox span{position:absolute;left:14px;top:9px;color:var(--muted);font-size:18px}
+select{padding:11px 36px 11px 12px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--text)}
+.tabs{display:flex;gap:7px;overflow:auto;padding-bottom:5px;margin-bottom:22px}.tab{border:1px solid var(--line);border-radius:99px;padding:8px 14px;background:var(--panel);color:var(--muted);white-space:nowrap}.tab.active{background:color-mix(in srgb,var(--blue) 16%,var(--panel));border-color:var(--blue);color:var(--text)}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:34px 0 16px}.section-head h2{margin:0;font-size:25px;letter-spacing:-.7px}.section-head p{margin:4px 0 0;color:var(--muted);font-size:14px}.count{color:var(--muted);font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px;transition:transform .15s,border-color .15s;display:flex;flex-direction:column;min-height:230px}.card:hover{transform:translateY(-3px);border-color:#6e7681}
+.cardtop{display:flex;align-items:flex-start;gap:13px}.badge-art{width:58px;height:58px;flex:none;border-radius:15px;background:var(--panel2);border:1px solid var(--line);display:grid;place-items:center;font-size:29px;position:relative;overflow:hidden}.badge-art:after{content:"";position:absolute;inset:auto 0 0;height:4px;background:var(--tier,var(--blue))}
+.card h3{font-size:17px;margin:2px 0 4px;line-height:1.25}.meta{display:flex;gap:6px;flex-wrap:wrap}.pill{font-size:11px;font-weight:750;padding:3px 8px;border-radius:99px;background:var(--panel2);border:1px solid var(--line);color:var(--muted)}.pill.active{color:var(--green);border-color:color-mix(in srgb,var(--green) 40%,var(--line))}.pill.retired{color:var(--orange)}.pill.internal{color:var(--red)}.pill.experimental{color:var(--purple)}
+.card p{color:var(--muted);font-size:13px;margin:15px 0 17px;flex:1}.cardfoot{display:flex;justify-content:space-between;align-items:center;gap:10px;border-top:1px solid var(--line);padding-top:13px}.criteria{font-size:12px;color:var(--muted)}.details{border:0;background:transparent;color:var(--blue);font-weight:700;padding:5px 0}
+.empty{padding:55px 20px;text-align:center;border:1px dashed var(--line);border-radius:14px;color:var(--muted);display:none}
+.tierrow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:16px 0 22px}.tier{border:1px solid var(--line);background:var(--panel);border-radius:12px;padding:14px;text-align:center}.tier .gem{font-size:23px}.tier strong{display:block;font-size:14px}.tier small{color:var(--muted)}
+.info-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}.info-box{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px}.info-box h3{margin:0 0 8px}.info-box p,.info-box li{color:var(--muted);font-size:14px}
+footer{border-top:1px solid var(--line);padding:28px 22px;color:var(--muted);font-size:13px}.footer-inner{max-width:1200px;margin:auto;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.modal{position:fixed;inset:0;background:#0009;display:none;align-items:center;justify-content:center;padding:20px;z-index:30}.modal.open{display:flex}.modalbox{width:min(620px,100%);max-height:90vh;overflow:auto;background:var(--panel);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:24px}.modalhead{display:flex;justify-content:space-between;gap:20px}.modalhead h2{margin:0}.close{border:1px solid var(--line);background:var(--panel2);color:var(--text);border-radius:9px;width:36px;height:36px;font-size:20px}.modalbox p,.modalbox li{color:var(--muted)}.modalbox .bigbadge{font-size:52px;margin:15px 0}.modalbox h4{margin:18px 0 5px}
+@media(max-width:850px){.hero-inner{grid-template-columns:1fr}.hero-card{max-width:560px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.navlinks{display:none}}
+@media(max-width:560px){.wrap,main{padding-left:15px;padding-right:15px}.hero-inner{padding:42px 0 32px}h1{letter-spacing:-1.5px}.grid{grid-template-columns:1fr}.tierrow{grid-template-columns:repeat(2,1fr)}.info-grid{grid-template-columns:1fr}.nav{padding:10px 15px}}
+</style>
+</head>
+<body>
+<header class="topbar"><nav class="nav">
+<a class="brand" href="#"><span class="brand-mark">🏆</span><span>Badge Atlas</span></a>
+<div class="navlinks"><a href="#catalog">Catalog</a><a href="#tiers">Tiers</a><a href="#highlights">Highlights</a><a href="#about">About</a></div>
+<button class="iconbtn" id="themeBtn" aria-label="Toggle theme">☼</button>
+<a class="btn primary" href="https://github.com/c0men" target="_blank" rel="noreferrer">My GitHub ↗</a>
+</nav></header>
+<section class="hero"><div class="wrap hero-inner">
+<div><span class="eyebrow">✦ Community reference · Independent project</span>
+<h1>Every badge has<br><span class="gradient">a story.</span></h1>
+<p>Explore GitHub profile achievements, program highlights, tier milestones, and retired designs — all in one searchable atlas.</p>
+<div class="hero-actions"><a class="btn primary" href="#catalog">Explore the catalog ↓</a><a class="btn" href="https://docs.github.com/en/account-and-profile/reference/profile-reference" target="_blank" rel="noreferrer">Official GitHub docs ↗</a></div>
+</div>
+<div class="hero-card"><h3>Inside the atlas</h3><div class="stats">
+<div class="stat"><strong id="totalStat">16</strong><span>Tracked entries</span></div><div class="stat"><strong>4</strong><span>Status categories</span></div><div class="stat"><strong>7</strong><span>Earnable activity badges*</span></div><div class="stat"><strong>4</strong><span>Tiered achievements</span></div>
+</div><p style="font-size:12px;margin:14px 0 0">*Based on the community-maintained catalog snapshot. Criteria can change.</p></div>
+</div></section>
+<main>
+<div class="notice"><span>ⓘ</span><div><b>Unofficial community catalog.</b> GitHub awards official achievements and highlights itself. This website does not grant badges or change your GitHub profile. Some unlock criteria are community-reported; always check GitHub’s own interface and documentation.</div></div>
+<section id="catalog">
+<div class="section-head"><div><h2>Badge catalog</h2><p>Search, filter, and open any entry for details.</p></div><span class="count" id="resultCount">16 entries</span></div>
+<div class="toolbar"><label class="searchbox"><span>⌕</span><input id="search" type="search" placeholder="Search badges, criteria, status…"></label>
+<select id="statusFilter" aria-label="Filter by status"><option value="all">All statuses</option><option value="active">Earnable</option><option value="retired">Retired</option><option value="experimental">Experimental / unreleased</option><option value="internal">GitHub staff only</option><option value="highlight">Profile highlights</option></select>
+<select id="typeFilter" aria-label="Filter by type"><option value="all">All types</option><option value="achievement">Achievement</option><option value="highlight">Highlight</option></select>
+</div>
+<div class="tabs" id="tabs"><button class="tab active" data-tab="all">All badges</button><button class="tab" data-tab="active">Earnable</button><button class="tab" data-tab="highlight">Highlights</button><button class="tab" data-tab="retired">Retired</button><button class="tab" data-tab="experimental">Experimental</button><button class="tab" data-tab="internal">Staff only</button></div>
+<div class="grid" id="badgeGrid"></div><div class="empty" id="empty">No badges match your search. Try another term or filter.</div>
+</section>
+<section id="tiers">
+<div class="section-head"><div><h2>Achievement tiers</h2><p>Some achievements upgrade in place. GitHub displays the highest tier earned.</p></div></div>
+<div class="tierrow">
+<div class="tier"><div class="gem" style="color:#d28b62">◆</div><strong>Default</strong><small>Base achievement</small></div>
+<div class="tier"><div class="gem" style="color:#c0c7d1">◆</div><strong>Bronze</strong><small>First milestone</small></div>
+<div class="tier"><div class="gem" style="color:#aeb9c8">◆</div><strong>Silver</strong><small>Second milestone</small></div>
+<div class="tier"><div class="gem" style="color:#e3b341">◆</div><strong>Gold</strong><small>Highest listed tier</small></div>
+</div>
+<div class="info-grid">
+<div class="info-box"><h3>Pull Shark</h3><p>Merged pull request milestones reported by the community:</p><ul><li>Base: 2 merged PRs</li><li>Bronze: 16</li><li>Silver: 128</li><li>Gold: 1,024</li></ul></div>
+<div class="info-box"><h3>Pair Extraordinaire</h3><p>Co-authored commits on merged pull requests:</p><ul><li>Base: 1 co-authored merged PR</li><li>Bronze: 10</li><li>Silver: 24</li><li>Gold: 48</li></ul></div>
+<div class="info-box"><h3>Starstruck</h3><p>Stars on a repository you created:</p><ul><li>Base: 16 stars</li><li>Bronze: 128</li><li>Silver: 512</li><li>Gold: 4,096</li></ul></div>
+<div class="info-box"><h3>Galaxy Brain</h3><p>Accepted answers in repository Discussions (not GitHub Community):</p><ul><li>Base: 2 accepted answers</li><li>Bronze: 8</li><li>Silver: 16</li><li>Gold: 32</li></ul></div>
+</div>
+</section>
+<section id="highlights">
+<div class="section-head"><div><h2>Profile highlights</h2><p>Program-related badges shown separately from activity achievements.</p></div></div>
+<div class="info-grid">
+<div class="info-box"><h3>Developer Program Member</h3><p>GitHub says registered Developer Program members building an app with the GitHub API receive this profile badge.</p><a href="https://github.com/settings/profile#github-developer-program" target="_blank" rel="noreferrer">Developer Program ↗</a></div>
+<div class="info-box"><h3>PRO</h3><p>Displayed while the account uses GitHub Pro.</p><a href="https://github.com/pricing" target="_blank" rel="noreferrer">GitHub plans ↗</a></div>
+<div class="info-box"><h3>Security Bug Bounty Hunter</h3><p>Recognizes qualifying work helping GitHub identify security vulnerabilities.</p><a href="https://bounty.github.com/" target="_blank" rel="noreferrer">GitHub Security Bounty ↗</a></div>
+<div class="info-box"><h3>GitHub Campus Expert</h3><p>For participants in GitHub’s Campus Experts program.</p><a href="https://github.com/campus-experts" target="_blank" rel="noreferrer">Campus Experts ↗</a></div>
+<div class="info-box"><h3>Security advisory credit</h3><p>Granted when a submitted advisory is accepted into the GitHub Advisory Database.</p><a href="https://github.com/advisories" target="_blank" rel="noreferrer">GitHub Advisories ↗</a></div>
+</div>
+</section>
+<section id="about">
+<div class="section-head"><div><h2>About this project</h2><p>A compact reference for developers exploring GitHub profile badges.</p></div></div>
+<div class="info-box"><p>This independent catalog is not affiliated with, endorsed by, or sponsored by GitHub. GitHub badge artwork and trademarks belong to their respective owners. Some names, criteria, and tier thresholds are community-maintained and may change without notice. If an official GitHub source conflicts with this catalog, follow GitHub’s official source.</p>
+<p>Useful references: <a href="https://docs.github.com/en/account-and-profile/reference/profile-reference" target="_blank" rel="noreferrer">GitHub profile reference</a> · <a href="https://github.blog/changelog/2026-09-11-profiles-now-show-your-highest-achievement-badge-tier/" target="_blank" rel="noreferrer">Highest-tier display update (Sep 11, 2026)</a> · <a href="https://github.com/christianalberto/github-profile-achievements" target="_blank" rel="noreferrer">Community catalog source</a>.</p></div>
+</section>
+</main>
+<footer><div class="footer-inner"><span>🏆 Badge Atlas · Built for the developer community</span><span>Independent project · Not affiliated with GitHub, Inc.</span></div></footer>
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modalbox"><div class="modalhead"><div><div class="meta" id="modalMeta"></div><h2 id="modalTitle"></h2></div><button class="close" id="closeModal" aria-label="Close">×</button></div><div class="bigbadge" id="modalIcon"></div><p id="modalDesc"></p><h4>How it works</h4><p id="modalCriteria"></p><div id="modalTiers"></div><p style="font-size:12px;margin-top:22px">Criteria are a community-maintained reference and may change. Verify in GitHub’s official UI.</p></div></div>
+<script>
+const badges=[
+{id:"pair",name:"Pair Extraordinaire",icon:"🤝",type:"achievement",status:"active",tag:"Earnable",desc:"Recognizes co-authored work on merged pull requests.",criteria:"Make a commit with a Co-authored-by trailer and have the pull request merged.",tiers:["1","10","24","48"],tierNames:["Base","Bronze","Silver","Gold"],source:"Community-reported"},
+{id:"quickdraw",name:"Quickdraw",icon:"⚡",type:"achievement",status:"active",tag:"Earnable",desc:"For quickly closing an issue or pull request.",criteria:"Open an issue or pull request and close it within five minutes. Community-reported threshold.",tiers:[],source:"Community-reported"},
+{id:"starstruck",name:"Starstruck",icon:"🌟",type:"achievement",status:"active",tag:"Earnable",desc:"Celebrates a repository you created becoming popular.",criteria:"Your repository reaches the listed star milestones.",tiers:["16","128","512","4,096"],tierNames:["Base","Bronze","Silver","Gold"],source:"Community-reported"},
+{id:"galaxy",name:"Galaxy Brain",icon:"🧠",type:"achievement",status:"active",tag:"Earnable",desc:"For helpful answers accepted in repository Discussions.",criteria:"Have your reply marked as the accepted answer in a repository’s Discussions. It no longer awards from GitHub Community discussions.",tiers:["2","8","16","32"],tierNames:["Base","Bronze","Silver","Gold"],source:"Community-reported; scope documented by GitHub"},
+{id:"pull",name:"Pull Shark",icon:"🦈",type:"achievement",status:"active",tag:"Earnable",desc:"Recognizes merged pull requests.",criteria:"Open pull requests that are merged into a repository.",tiers:["2","16","128","1,024"],tierNames:["Base","Bronze","Silver","Gold"],source:"Community-reported"},
+{id:"yolo",name:"YOLO",icon:"🚀",type:"achievement",status:"active",tag:"Earnable",desc:"For merging your own pull request without a review.",criteria:"Merge a pull request without a code review. Automated or bot reviews may affect eligibility.",tiers:[],source:"Community-reported"},
+{id:"sponsor",name:"Public Sponsor",icon:"💖",type:"achievement",status:"active",tag:"Earnable",desc:"Recognizes sponsoring open-source contributors.",criteria:"Sponsor an eligible open-source maintainer through GitHub Sponsors.",tiers:[],source:"GitHub profile reference"},
+{id:"arctic",name:"Arctic Code Vault Contributor",icon:"❄️",type:"achievement",status:"retired",tag:"Retired",desc:"Awarded for contributing to public repositories included in GitHub’s 2020 Archive Program snapshot.",criteria:"Only contributors to qualifying repositories in the February 2, 2020 snapshot received this badge. It cannot be earned now.",tiers:[],source:"Historical GitHub program"},
+{id:"mars",name:"Mars 2020 Contributor",icon:"🚁",type:"achievement",status:"retired",tag:"Retired",desc:"Recognized contributions to software used by NASA’s Ingenuity helicopter.",criteria:"Awarded for commits in qualifying repositories and versions used by NASA JPL. The event has ended.",tiers:[],source:"Historical GitHub program"},
+{id:"heart",name:"Heart On Your Sleeve",icon:"❤️",type:"achievement",status:"experimental",tag:"Unreleased",desc:"An experimental badge associated with heart reactions.",criteria:"Seen in GitHub asset/experimental rollouts. GitHub has not announced public availability or final criteria.",tiers:["?","16","128","?"],tierNames:["Base","Bronze","Silver","Gold"],source:"Experimental / community-reported"},
+{id:"sourcerer",name:"Open Sourcerer",icon:"🧙",type:"achievement",status:"experimental",tag:"Unreleased",desc:"An experimental badge associated with merged pull requests across multiple public repositories.",criteria:"Seen in experiments. No public launch date or official final criteria announced.",tiers:["?","8","16","64"],tierNames:["Base","Bronze","Silver","Gold"],source:"Experimental / community-reported"},
+{id:"pioneer",name:"Proxima Pioneer",icon:"🛰️",type:"achievement",status:"internal",tag:"Staff only",desc:"Internal GitHub Proxima program achievement.",criteria:"Associated with participation in GitHub’s internal Proxima proof of concept. Not available to public accounts.",tiers:[],source:"Staff-only"},
+{id:"staffshipper",name:"Proxima Staffshipper",icon:"🚢",type:"achievement",status:"internal",tag:"Staff only",desc:"Internal GitHub Proxima program achievement.",criteria:"Associated with shipping a Proxima Staffship instance. Not available to public accounts.",tiers:[],source:"Staff-only"},
+{id:"staffuser",name:"Proxima Staffuser",icon:"🧑‍💻",type:"achievement",status:"internal",tag:"Staff only",desc:"Internal GitHub Proxima program achievement.",criteria:"Associated with teams onboarded to Proxima. Not available to public accounts.",tiers:[],source:"Staff-only"},
+{id:"pro",name:"PRO",icon:"💎",type:"highlight",status:"highlight",tag:"Profile highlight",desc:"A program highlight shown for GitHub Pro subscribers.",criteria:"Use GitHub Pro. This is a profile highlight, not an activity achievement.",tiers:[],source:"Official GitHub docs"},
+{id:"devprogram",name:"Developer Program Member",icon:"🧩",type:"highlight",status:"highlight",tag:"Profile highlight",desc:"A profile highlight for GitHub Developer Program members.",criteria:"Register for the GitHub Developer Program and build an app with the GitHub API.",tiers:[],source:"Official GitHub docs"},
+{id:"security",name:"Security Bug Bounty Hunter",icon:"🛡️",type:"highlight",status:"highlight",tag:"Profile highlight",desc:"A profile highlight for qualifying GitHub security vulnerability research.",criteria:"Help find security vulnerabilities through GitHub’s security program; qualifying work is required.",tiers:[],source:"Official GitHub docs"},
+{id:"campus",name:"GitHub Campus Expert",icon:"🎓",type:"highlight",status:"highlight",tag:"Profile highlight",desc:"A profile highlight for participants in the Campus Experts program.",criteria:"Participate in GitHub Campus Experts. Application and program eligibility apply.",tiers:[],source:"Official GitHub docs"},
+{id:"advisory",name:"Security advisory credit",icon:"📋",type:"highlight",status:"highlight",tag:"Profile highlight",desc:"A profile highlight for accepted security advisories.",criteria:"Submit a security advisory that is accepted into the GitHub Advisory Database.",tiers:[],source:"Official GitHub docs"}
+];
+const grid=document.getElementById("badgeGrid"),search=document.getElementById("search"),statusFilter=document.getElementById("statusFilter"),typeFilter=document.getElementById("typeFilter"),empty=document.getElementById("empty");
+let tab="all";
+function labelClass(s){return s==="active"?"active":s==="retired"?"retired":s==="internal"?"internal":s==="experimental"?"experimental":""}
+function render(){const q=search.value.toLowerCase().trim(),sf=statusFilter.value,tf=typeFilter.value;
+const list=badges.filter(b=>{const text=[b.name,b.desc,b.criteria,b.status,b.type,b.source].join(" ").toLowerCase();return (!q||text.includes(q))&&(sf==="all"||b.status===sf)&&(tf==="all"||b.type===tf)&&(tab==="all"||b.status===tab)});
+grid.innerHTML=list.map(b=>`<article class="card"><div class="cardtop"><div class="badge-art" style="--tier:${b.status==="retired"?"var(--orange)":b.status==="internal"?"var(--red)":b.status==="experimental"?"var(--purple)":"var(--blue)"}">${b.icon}</div><div><h3>${b.name}</h3><div class="meta"><span class="pill ${labelClass(b.status)}">${b.tag}</span><span class="pill">${b.type==="highlight"?"Highlight":"Achievement"}</span></div></div></div><p>${b.desc}</p><div class="cardfoot"><span class="criteria">${b.tiers&&b.tiers.length?b.tiers.length+" tier milestones":b.source}</span><button class="details" data-id="${b.id}">Details ↗</button></div></article>`).join("");
+document.getElementById("resultCount").textContent=`${list.length} entr${list.length===1?"y":"ies"}`;empty.style.display=list.length?"none":"block";
+document.querySelectorAll(".details").forEach(btn=>btn.addEventListener("click",()=>openModal(badges.find(b=>b.id===btn.dataset.id))));
+}
+function openModal(b){document.getElementById("modalTitle").textContent=b.name;document.getElementById("modalIcon").textContent=b.icon;document.getElementById("modalDesc").textContent=b.desc;document.getElementById("modalCriteria").textContent=b.criteria;document.getElementById("modalMeta").innerHTML=`<span class="pill ${labelClass(b.status)}">${b.tag}</span><span class="pill">${b.source}</span>`;
+document.getElementById("modalTiers").innerHTML=b.tiers&&b.tiers.length?`<h4>Reported milestones</h4><div class="tierrow">${b.tiers.map((t,i)=>`<div class="tier"><div class="gem" style="color:${["#d28b62","#d28b62","#aeb9c8","#e3b341"][i]}">◆</div><strong>${b.tierNames[i]}</strong><small>${t}</small></div>`).join("")}</div>`:"";
+document.getElementById("modal").classList.add("open")}
+document.getElementById("closeModal").onclick=()=>document.getElementById("modal").classList.remove("open");
+document.getElementById("modal").addEventListener("click",e=>{if(e.target.id==="modal")e.currentTarget.classList.remove("open")});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")document.getElementById("modal").classList.remove("open")});
+search.addEventListener("input",render);statusFilter.addEventListener("change",()=>{tab="all";document.querySelectorAll(".tab").forEach(x=>x.classList.toggle("active",x.dataset.tab==="all"));render()});typeFilter.addEventListener("change",render);
+document.querySelectorAll(".tab").forEach(btn=>btn.addEventListener("click",()=>{tab=btn.dataset.tab;document.querySelectorAll(".tab").forEach(x=>x.classList.toggle("active",x===btn));statusFilter.value="all";render()}));
+document.getElementById("themeBtn").addEventListener("click",()=>{const light=document.documentElement.dataset.theme!=="light";document.documentElement.dataset.theme=light?"light":"dark";document.getElementById("themeBtn").textContent=light?"☾":"☼";localStorage.setItem("badge-atlas-theme",light?"light":"dark")});
+if(localStorage.getItem("badge-atlas-theme")==="light"){document.documentElement.dataset.theme="light";document.getElementById("themeBtn").textContent="☾"}
+document.getElementById("totalStat").textContent=badges.length;render();
+</script>
+</body></html>
